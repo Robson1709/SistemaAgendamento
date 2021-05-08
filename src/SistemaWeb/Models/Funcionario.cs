@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace SistemaWeb.Models
 {
@@ -9,32 +10,31 @@ namespace SistemaWeb.Models
 
         public int DepartamentoId { get; set; }
 
-        //[Required(ErrorMessage = "{0} Obrigatório")]
-        //[StringLength(60, MinimumLength = 3, ErrorMessage = " Tamanho do campo {0} deve ser entre {2} e {1}")]
-        //[Display(Name = "Nome")]
+        [Required(ErrorMessage = "{0} Obrigatório")]
+        [StringLength(60, MinimumLength = 3, ErrorMessage = " Tamanho do campo {0} deve ser entre {2} e {1}")]
+        [Display(Name = "Nome")]
         public string Name { get; set; }
 
-        //[Required(ErrorMessage = "{0} Obrigatório")]
-        //[Display(Name = "E-mail")]
-        //[EmailAddress(ErrorMessage = "Informe um {0} válido")]
-        //[DataType(DataType.EmailAddress)]
+        [Required(ErrorMessage = "{0} Obrigatório")]
+        [Display(Name = "E-mail")]
+        [EmailAddress(ErrorMessage = "Informe um {0} válido")]
+        [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 
-        //[Required(ErrorMessage = "{0} Obrigatório")]
-        //[StringLength(11, MinimumLength = 10, ErrorMessage = " Tamanho do campo {0} deve ser entre {2} e {1}")]
-        //[Display(Name = "Telefone")]
+        [Required(ErrorMessage = "{0} Obrigatório")]
+        [StringLength(11, MinimumLength = 10, ErrorMessage = " Tamanho do campo {0} deve ser entre {2} e {1}")]
         public string Telefone { get; set; }
 
-        //[Required(ErrorMessage = "{0} Obrigatório")]
-        //[Display(Name = "Data de Nascimento")]
-        //[DataType(DataType.Date)]
-        //[DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
+        [Required(ErrorMessage = "{0} Obrigatório")]
+        [Display(Name = "Data de Nascimento")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime DataNascimento { get; set; }
 
-        //[Required(ErrorMessage = "{0} Obrigatório")]
-        //[Display(Name = "Salário")]
-        //[Range(100.0, 50000.0, ErrorMessage = "{0} mínimo {1} máximo {2}")]
-        //[DisplayFormat(DataFormatString = "{0:F2}")]
+        [Required(ErrorMessage = "{0} Obrigatório")]
+        [Display(Name = "Salário")]
+        [Range(100.0, 50000.0, ErrorMessage = "{0} mínimo {1} máximo {2}")]
+        [DisplayFormat(DataFormatString = "{0:F2}")]
         public decimal Salario { get; set; }
 
         /* EF Relation */

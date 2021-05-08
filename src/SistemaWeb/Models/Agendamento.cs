@@ -8,7 +8,8 @@ namespace SistemaWeb.Models
     {
         public int Id { get; set; }
 
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
+        //[DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
+        [Display(Name = "Data")]
         public DateTime Date { get; set; }
         
         public StatusAgenda Status { get; set; }
@@ -16,6 +17,7 @@ namespace SistemaWeb.Models
         [Display(Name = "Tipo Serviço")]
         public TipoServico TipoServico { get; set; }
 
+        [Display(Name = "Funcionario")]
         public int FuncionarioId { get; set; }
 
         [Display(Name = "Cliente")]
