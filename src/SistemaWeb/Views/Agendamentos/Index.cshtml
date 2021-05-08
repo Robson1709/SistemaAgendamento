@@ -1,0 +1,59 @@
+﻿@model IEnumerable<SistemaWeb.Models.Agendamento>
+
+@{
+    ViewData["Title"] = "Agendamentos";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p>
+    <a class="btn btn-info" asp-action="Create">Novo Agendamento</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TipoServico.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Funcionario.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cliente.Nome)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TipoServico.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Funcionario.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cliente.Nome)
+            </td>
+            <td class="text-right">
+                <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
+                <a class="btn btn-info" asp-action="Details" asp-route-id="@item.Id">Detalhes</a>
+                <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Excluir</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
