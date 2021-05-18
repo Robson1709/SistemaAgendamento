@@ -17,7 +17,7 @@ namespace SistemaWeb.Models
         [Display(Name = "Tipo Serviço")]
         public TipoServico TipoServico { get; set; }
 
-        [Display(Name = "Funcionario")]
+        [Display(Name = "Funcionário")]
         public int FuncionarioId { get; set; }
 
         [Display(Name = "Cliente")]

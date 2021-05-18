@@ -15,6 +15,7 @@ namespace SistemaWeb.Models
         [Required(ErrorMessage = "{0} Obrigatório")]
         [StringLength(11, MinimumLength = 10, ErrorMessage = " Tamanho do campo {0} deve ser entre {2} e {1}")]
         [Display(Name = "Telefone")]
+        [DisplayFormat(DataFormatString = "{0:(##)#####-####}")]
         public string Telefone { get; set; }
 
         [Required(ErrorMessage = "{0} Obrigatório")]

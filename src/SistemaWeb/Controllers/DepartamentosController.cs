@@ -139,10 +139,18 @@ namespace SistemaWeb.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var departamento = await _context.Departamentos.FindAsync(id);
-            _context.Departamentos.Remove(departamento);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            try
+            {
+                var departamento = await _context.Departamentos.FindAsync(id);
+                _context.Departamentos.Remove(departamento);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            catch(DbUpdateException e)
+            {
+                throw new ApplicationException(e.Message);
+            }
+
         }
 
         private bool DepartamentoExists(int id)
