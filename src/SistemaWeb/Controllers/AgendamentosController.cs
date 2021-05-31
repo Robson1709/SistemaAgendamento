@@ -20,6 +20,7 @@ namespace SistemaWeb.Controllers
         }
 
         // GET: Agendamentos
+        [Route("lista-de-agendamentos")]
         public async Task<IActionResult> Index()
         {
             var applicationDbContext = _context.Agendamentos.Include(a => a.Cliente).Include(a => a.Funcionario).Include(a => a.TipoServico);
@@ -27,6 +28,7 @@ namespace SistemaWeb.Controllers
         }
 
         // GET: Agendamentos/Details/5
+        [Route("dados-do-agendamento/{id:int}")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -48,6 +50,7 @@ namespace SistemaWeb.Controllers
         }
 
         // GET: Agendamentos/Create
+        [Route("novo-agendamento")]
         public IActionResult Create()
         {
             ViewData["ClienteId"] = new SelectList(_context.Clientes, "Id", "Nome");
@@ -59,9 +62,10 @@ namespace SistemaWeb.Controllers
         // POST: Agendamentos/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Route("novo-agendamento")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Date,Status,FuncionarioId,ClienteId,TipoServicoId")] Agendamento agendamento)
+        public async Task<IActionResult> Create(Agendamento agendamento)
         {
             if (ModelState.IsValid)
             {
@@ -76,6 +80,7 @@ namespace SistemaWeb.Controllers
         }
 
         // GET: Agendamentos/Edit/5
+        [Route("editar-agendamento/{id:int}")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -97,6 +102,7 @@ namespace SistemaWeb.Controllers
         // POST: Agendamentos/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Route("editar-agendamento/{id:int}")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Date,Status,FuncionarioId,ClienteId,TipoServicoId")] Agendamento agendamento)
@@ -133,6 +139,7 @@ namespace SistemaWeb.Controllers
         }
 
         // GET: Agendamentos/Delete/5
+        [Route("excluir-agendamento/{id:int}")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -154,6 +161,7 @@ namespace SistemaWeb.Controllers
         }
 
         // POST: Agendamentos/Delete/5
+        [Route("excluir-agendamento/{id:int}")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

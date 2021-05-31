@@ -20,12 +20,14 @@ namespace SistemaWeb.Controllers
         }
 
         // GET: Clientes
+        [Route("lista-de-clientes")]
         public async Task<IActionResult> Index()
         {
             return View(await _context.Clientes.ToListAsync());
         }
 
         // GET: Clientes/Details/5
+        [Route("dados-do-cliente/{id:int}")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -44,14 +46,14 @@ namespace SistemaWeb.Controllers
         }
 
         // GET: Clientes/Create
+        [Route("novo-cliente")]
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Clientes/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: Clientes/Create        
+        [Route("novo-cliente")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Nome,Telefone,Email,DataNascimento")] Cliente cliente)
@@ -66,6 +68,7 @@ namespace SistemaWeb.Controllers
         }
 
         // GET: Clientes/Edit/5
+        [Route("editar-cliente/{id:int}")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -82,8 +85,7 @@ namespace SistemaWeb.Controllers
         }
 
         // POST: Clientes/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Route("editar-cliente/{id:int}")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,Telefone,Email,DataNascimento")] Cliente cliente)
@@ -117,6 +119,7 @@ namespace SistemaWeb.Controllers
         }
 
         // GET: Clientes/Delete/5
+        [Route("excluir-cliente/{id:int}")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -135,6 +138,7 @@ namespace SistemaWeb.Controllers
         }
 
         // POST: Clientes/Delete/5
+        [Route("excluir-cliente/{id:int}")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

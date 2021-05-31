@@ -20,12 +20,14 @@ namespace SistemaWeb.Controllers
         }
 
         // GET: Departamentos
+        [Route("lista-de-departamentos")]
         public async Task<IActionResult> Index()
         {
             return View(await _context.Departamentos.ToListAsync());
         }
 
         // GET: Departamentos/Details/5
+        [Route("lista-de-departamentos/{id:int}")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -44,14 +46,14 @@ namespace SistemaWeb.Controllers
         }
 
         // GET: Departamentos/Create
+        [Route("novo-departamentos")]
         public IActionResult Create()
         {
             return View();
         }
 
         // POST: Departamentos/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Route("novo-departamentos")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Nome")] Departamento departamento)
@@ -66,6 +68,7 @@ namespace SistemaWeb.Controllers
         }
 
         // GET: Departamentos/Edit/5
+        [Route("editar-departamentos/{id:int}")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -82,8 +85,7 @@ namespace SistemaWeb.Controllers
         }
 
         // POST: Departamentos/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Route("editar-departamentos/{id:int}")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Nome")] Departamento departamento)
@@ -117,6 +119,7 @@ namespace SistemaWeb.Controllers
         }
 
         // GET: Departamentos/Delete/5
+        [Route("excluir-departamentos/{id:int}")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -135,6 +138,7 @@ namespace SistemaWeb.Controllers
         }
 
         // POST: Departamentos/Delete/5
+        [Route("excluir-departamentos/{id:int}")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
