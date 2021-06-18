@@ -146,19 +146,23 @@ namespace SistemaWeb.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var funcionario = await _context.Funcionarios.FindAsync(id);         
-            var agendamento = await _context.Agendamentos.FirstOrDefaultAsync(x => x.FuncionarioId.Equals(id));
-            if(agendamento == null)
-            {
-                _context.Funcionarios.Remove(funcionario);
-                await _context.SaveChangesAsync();
-            }
-            else
-            {
-                //return ViewBag = ("Teste");
-            }
+            var funcionario = await _context.Funcionarios.FindAsync(id);
+            _context.Funcionarios.Remove(funcionario);
+            await _context.SaveChangesAsync();
 
-            
+
+            //var agendamento = await _context.Agendamentos.FirstOrDefaultAsync(x => x.FuncionarioId.Equals(id));
+            //if(agendamento == null)
+            //{
+            //    _context.Funcionarios.Remove(funcionario);
+            //    await _context.SaveChangesAsync();
+            //}
+            //else
+            //{
+            //    //return ViewBag = ("Teste");
+            //}
+
+
             return RedirectToAction(nameof(Index));
         }
 
